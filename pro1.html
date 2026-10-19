@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عبدالله بادحدح</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: #060b19; color: #f1f5f9; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; padding-bottom: 150px; position: relative; overflow-x: hidden; overflow-y: auto; }
+        
+        .stars-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .star { position: absolute; background-color: #ffffff; border-radius: 50%; animation: twinkle linear infinite; }
+        @keyframes twinkle { 0% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.5); } }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(6, 11, 25, 0) 65%);
+            z-index: -2;
+            pointer-events: none;
+            animation: bgPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+            50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+        }
+
+        .lang-switch { position: absolute; top: 20px; left: 20px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(51, 65, 85, 0.5); color: #38bdf8; padding: 8px 16px; border-radius: 20px; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; z-index: 100; transition: all 0.3s ease; }
+        .lang-switch:hover { background: rgba(14, 165, 233, 0.2); border-color: #0ea5e9; }
+        
+        .container { width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 35px; position: relative; z-index: 1; margin-top: 40px; margin-bottom: 20px; }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .profile-section { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .link-card:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0; }
+        .link-card:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0; }
+        .link-card:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.4s forwards; opacity: 0; }
+        .link-card:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.5s forwards; opacity: 0; }
+        .footer { animation: fadeInUp 0.6s ease-out 0.8s forwards; opacity: 0; }
+        
+        .profile-section { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        
+        .avatar-wrapper { position: relative; width: 150px; height: 150px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); transition: all 0.4s ease; cursor: pointer; }
+        .avatar-wrapper::before { content: ''; position: absolute; width: 140px; height: 140px; border-radius: 50%; border: 2px dashed #0ea5e9; z-index: 0; animation: spinClockwise 10s linear infinite; }
+        .avatar-wrapper::after { content: ''; position: absolute; width: 150px; height: 150px; border-radius: 50%; border: 1px dotted rgba(255, 255, 255, 0.5); z-index: 0; animation: spinCounter 15s linear infinite; }
+        .avatar-pulse { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #0ea5e9; z-index: 1; animation: pulseRing 3s ease-out infinite; }
+        .main-avatar { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; position: relative; z-index: 2; transition: transform 0.4s ease; }
+        .avatar-wrapper:hover { border-color: rgba(14, 165, 233, 0.6); box-shadow: 0 0 40px rgba(14, 165, 233, 0.5); }
+        .avatar-wrapper:hover .main-avatar { transform: scale(1.05); }
+        
+        @keyframes spinClockwise { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spinCounter { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+        @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.4); opacity: 0; } }
+        
+        .name-wrapper { display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; }
+        .name { font-size: 36px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(90deg, #ffffff, #38bdf8, #ffffff, #0ea5e9); background-size: 300% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradientMove 5s linear infinite; }
+        @keyframes gradientMove { 0% { background-position: 0% center; } 100% { background-position: 100% center; } }
+        
+        .copy-btn { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(51, 65, 85, 0.5); color: #94a3b8; width: 38px; height: 38px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 16px; transition: all 0.3s ease; }
+        .copy-btn:hover { background: rgba(14, 165, 233, 0.2); color: #38bdf8; border-color: #0ea5e9; }
+        .copy-btn.copied { background: rgba(34, 197, 94, 0.2); color: #4ade80; border-color: #22c55e; }
+        
+        .toast { position: absolute; top: -35px; background: #22c55e; color: white; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; opacity: 0; visibility: hidden; transition: all 0.3s ease; transform: translateY(5px); }
+        .toast.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        .title { font-size: 19px; color: #38bdf8; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .description { font-size: 15px; color: #94a3b8; margin-top: 5px; line-height: 1.6; }
+        
+        .read-more-btn { background: transparent; border: none; color: #38bdf8; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px; margin-top: 8px; transition: all 0.3s ease; }
+        .read-more-btn:hover { color: #ffffff; }
+        .read-more-btn i { font-size: 12px; transition: transform 0.3s ease; }
+        .read-more-btn.active i { transform: rotate(180deg); }
+        
+        .bio-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-top 0.5s ease-out; opacity: 0; text-align: justify; color: #cbd5e1; font-size: 14px; line-height: 1.8; background: rgba(255, 255, 255, 0.02); border-radius: 12px; padding: 0 15px; }
+        .bio-content.active { max-height: 350px; opacity: 1; margin-top: 10px; padding: 15px; border: 1px solid rgba(56, 189, 248, 0.2); }
+        
+        .tags-wrapper { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px; }
+        .tags-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .tag { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; cursor: default; }
+        .tag:hover { background: rgba(14, 165, 233, 0.1); border-color: #0ea5e9; color: #38bdf8; transform: translateY(-2px); }
+        
+        .tech-icons-row { display: flex; justify-content: center; gap: 12px; }
+        .tech-icon-badge { display: flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 20px; transition: all 0.3s ease; }
+        .tech-icon-badge i { font-size: 16px; }
+        .tech-icon-badge span { font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500; color: #94a3b8; letter-spacing: 0.5px; }
+        .tech-icon-badge:hover { background: rgba(14, 165, 233, 0.1); border-color: #0ea5e9; transform: translateY(-2px); }
+        .tech-icon-badge:hover span { color: #38bdf8; }
+        .devicon-python-plain { color: #3776AB; }
+        .devicon-html5-plain { color: #E34F26; }
+        
+        .links-container { width: 100%; display: flex; flex-direction: column; gap: 16px; margin-top: 15px; }
+        .link-card { display: flex; align-items: center; justify-content: space-between; background-color: rgba(15, 23, 42, 0.6); border: 1px solid rgba(51, 65, 85, 0.5); border-radius: 16px; padding: 18px 24px; position: relative; backdrop-filter: blur(5px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .link-card:hover { background-color: rgba(30, 41, 59, 0.9); border-color: #0ea5e9; transform: translateY(-3px); box-shadow: 0 0 25px rgba(14, 165, 233, 0.3), inset 0 0 15px rgba(14, 165, 233, 0.05); }
+        
+        .link-info { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; color: #ffffff; text-decoration: none; }
+        .link-title { font-size: 17px; font-weight: 700; color: #e2e8f0; transition: color 0.3s ease; }
+        .link-card:hover .link-title { color: #38bdf8; }
+        
+        .link-username-wrapper { display: flex; align-items: center; gap: 8px; }
+        .link-username { font-size: 14px; color: #64748b; font-family: 'Poppins', sans-serif; direction: ltr; letter-spacing: 0.5px; }
+        
+        .copy-username-btn { background: transparent; border: none; color: #64748b; cursor: pointer; font-size: 14px; padding: 4px; border-radius: 5px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .copy-username-btn:hover { color: #38bdf8; background: rgba(14, 165, 233, 0.1); }
+        .copy-username-btn.copied { color: #4ade80; }
+        
+        .card-left-actions { display: flex; align-items: center; gap: 15px; }
+        
+        .link-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: 22px; position: relative; text-decoration: none; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .icon-x { color: #ffffff; background-color: #000000; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .icon-linkedin { color: #0ea5e9; background-color: rgba(10, 102, 194, 0.15); border: 1px solid rgba(10, 102, 194, 0.3); }
+        .icon-github { color: #ffffff; background-color: #161b22; border: 1px solid rgba(255, 255, 255, 0.15); }
+        .icon-telegram { color: #2AABEE; background-color: rgba(42, 171, 238, 0.15); border: 1px solid rgba(42, 171, 238, 0.3); }
+        
+        .link-card:hover .link-icon { transform: scale(1.1) rotate(15deg); border-radius: 20px; }
+        .link-icon::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 14px; border: 2px solid transparent; opacity: 0; transition: all 0.5s ease; }
+        .link-card:hover .icon-linkedin::after { border-color: #0ea5e9; opacity: 1; transform: scale(1.3); }
+        .link-card:hover .icon-x::after { border-color: #ffffff; opacity: 1; transform: scale(1.3); }
+        .link-card:hover .icon-github::after { border-color: #ffffff; opacity: 1; transform: scale(1.3); }
+        .link-card:hover .icon-telegram::after { border-color: #2AABEE; opacity: 1; transform: scale(1.3); }
+        
+        .arrow-icon { color: #475569; font-size: 20px; text-decoration: none; transition: transform 0.3s ease, color 0.3s ease; }
+        .link-card:hover .arrow-icon { transform: translateX(-6px); color: #0ea5e9; }
+        
+        .footer { margin-top: 40px; font-size: 13px; color: #475569; font-weight: 500; }
+        
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; background-color: rgba(14, 165, 233, 0.8); color: #ffffff; border: none; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer; z-index: 100; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); }
+        .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background-color: #38bdf8; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6); }
+        
+        svg { width: 24px; height: 24px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+    <button class="lang-switch" id="langSwitch">EN</button>
+    <div class="stars-container" id="starsContainer"></div>
+
+    <div class="container">
+        <div class="profile-section">
+            <div class="avatar-wrapper">
+                <div class="avatar-pulse"></div>
+                <img class="main-avatar" src="https://i.postimg.cc/DS9y9Chk/avatar.jpg" alt="عبدالله بادحدح">
+            </div>
+            <div class="name-wrapper">
+                <h1 class="name" id="nameText">عبدالله بادحدح</h1>
+                <button class="copy-btn" id="copyPageBtn" title="نسخ رابط الصفحة">
+                    <i class="fa-regular fa-copy" id="copyPageIcon"></i>
+                </button>
+                <span class="toast" id="pageToastMsg" data-ar="تم نسخ الرابط!" data-en="Link Copied!">تم نسخ الرابط!</span>
+            </div>
+            <div class="title" id="titleText">🎓 طالب ذكاء اصطناعي | جامعة أم القرى</div>
+            <p class="description" id="descText">⚡ مبتدئ شغوف في مجالات البرمجة والتعلم الآلي والتقنيات الحديثة</p>
+            
+            <button class="read-more-btn" id="readMoreBtn">
+                <span data-ar="اقرأ المزيد عني" data-en="Read More About Me">اقرأ المزيد عني</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="bio-content" id="bioContent" data-ar="من تساؤلات بسيطة وفضول عن البرمجة إلى غرق تام في عالم الذكاء الاصطناعي والتعلم الآلي! قاعد أتعلم كل يوم شيء جديد وأبني مهاراتي بنفسي. أعشق التحديات اللي تضغط عقلي وتخليني ألقى حلول غير تقليدية، وعيني هالفترة على الهاكاثونات والمنافسات البرمجية عشان أحول أفكاري لمشاريع تكسر الدنيا 🚀⚡" data-en="From simple questions and curiosity about programming to diving deep into the world of AI and Machine Learning! I learn something new every day and build my skills independently. I love challenges that push my mind to find unconventional solutions. Currently, I'm focusing on hackathons and coding competitions to turn my ideas into impactful projects 🚀⚡">
+                من تساؤلات بسيطة وفضول عن البرمجة إلى غرق تام في عالم الذكاء الاصطناعي والتعلم الآلي! قاعد أتعلم كل يوم شيء جديد وأبني مهاراتي بنفسي. أعشق التحديات اللي تضغط عقلي وتخليني ألقى حلول غير تقليدية، وعيني هالفترة على الهاكاثونات والمنافسات البرمجية عشان أحول أفكاري لمشاريع تكسر الدنيا 🚀⚡
+            </div>
+
+            <div class="tags-wrapper">
+                <div class="tags-container">
+                    <span class="tag">AI Enthusiast</span>
+                    <span class="tag">Tech Explorer</span>
+                    <span class="tag">Always Learning</span>
+                </div>
+                <div class="tech-icons-row">
+                    <div class="tech-icon-badge"><i class="devicon-python-plain"></i><span>Python</span></div>
+                    <div class="tech-icon-badge"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="links-container">
+            <div class="link-card">
+                <div class="link-info">
+                    <span class="link-title">X</span>
+                    <div class="link-username-wrapper">
+                        <span class="link-username">@AbdullahB467</span>
+                        <button class="copy-username-btn" data-username="@AbdullahB467"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="card-left-actions">
+                    <a href="https://x.com/AbdullahB467" target="_blank" class="link-icon icon-x"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="https://x.com/AbdullahB467" target="_blank" class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <div class="link-card">
+                <div class="link-info">
+                    <span class="link-title">LinkedIn</span>
+                    <div class="link-username-wrapper">
+                        <span class="link-username">abdullah-badahdah</span>
+                        <button class="copy-username-btn" data-username="abdullah-badahdah"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="card-left-actions">
+                    <a href="https://www.linkedin.com/in/abdullah-badahdah-b726653a7" target="_blank" class="link-icon icon-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="https://www.linkedin.com/in/abdullah-badahdah-b726653a7" target="_blank" class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <div class="link-card">
+                <div class="link-info">
+                    <span class="link-title">GitHub</span>
+                    <div class="link-username-wrapper">
+                        <span class="link-username">@Abdallh17</span>
+                        <button class="copy-username-btn" data-username="@Abdallh17"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="card-left-actions">
+                    <a href="https://github.com/Abdailh17" target="_blank" class="link-icon icon-github"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                    <a href="https://github.com/Abdailh17" target="_blank" class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <div class="link-card">
+                <div class="link-info">
+                    <span class="link-title">Telegram</span>
+                    <div class="link-username-wrapper">
+                        <span class="link-username">@abdailh17</span>
+                        <button class="copy-username-btn" data-username="@abdailh17"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="card-left-actions">
+                    <a href="https://t.me/abdailh17" target="_blank" class="link-icon icon-telegram"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+                    <a href="https://t.me/abdailh17" target="_blank" class="arrow-icon"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" id="footerText" data-ar="تم التصميم والتطوير بواسطة عبدالله بادحدح © 2026" data-en="Designed & Developed by Abdullah Badahdah © 2026">
+            تم التصميم والتطوير بواسطة عبدالله بادحدح © 2026
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const langSwitch = document.getElementById('langSwitch');
+        let currentLang = 'ar';
+        const nameText = document.getElementById('nameText');
+        const titleText = document.getElementById('titleText');
+        const descText = document.getElementById('descText');
+        const readMoreSpan = document.querySelector('#readMoreBtn span');
+
+        langSwitch.addEventListener('click', () => {
+            const translatableElements = document.querySelectorAll('[data-ar][data-en]');
+            if (currentLang === 'ar') {
+                currentLang = 'en';
+                langSwitch.textContent = 'ع';
+                document.body.style.direction = 'ltr';
+                translatableElements.forEach(el => { el.textContent = el.getAttribute('data-en'); });
+                nameText.textContent = 'Abdullah Badahdah';
+                titleText.textContent = '🎓 AI Student | Umm Al-Qura University';
+                descText.textContent = '⚡ Passionate beginner in Programming, Machine Learning, and Modern Tech';
+            } else {
+                currentLang = 'ar';
+                langSwitch.textContent = 'EN';
+                document.body.style.direction = 'rtl';
+                translatableElements.forEach(el => { el.textContent = el.getAttribute('data-ar'); });
+                nameText.textContent = 'عبدالله بادحدح';
+                titleText.textContent = '🎓 طالب ذكاء اصطناعي | جامعة أم القرى';
+                descText.textContent = '⚡ مبتدئ شغوف في مجالات البرمجة والتعلم الآلي والتقنيات الحديثة';
+            }
+        });
+
+        const copyPageBtn = document.getElementById('copyPageBtn');
+        const copyPageIcon = document.getElementById('copyPageIcon');
+        const pageToastMsg = document.getElementById('pageToastMsg');
+
+        copyPageBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                copyPageIcon.classList.remove('fa-copy');
+                copyPageIcon.classList.add('fa-check');
+                copyPageBtn.classList.add('copied');
+                pageToastMsg.classList.add('show');
+                setTimeout(() => {
+                    copyPageIcon.classList.remove('fa-check');
+                    copyPageIcon.classList.add('fa-copy');
+                    copyPageBtn.classList.remove('copied');
+                    pageToastMsg.classList.remove('show');
+                }, 2000);
+            });
+        });
+
+        const copyUsernameBtns = document.querySelectorAll('.copy-username-btn');
+        copyUsernameBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const username = btn.getAttribute('data-username');
+                const icon = btn.querySelector('i');
+                navigator.clipboard.writeText(username).then(() => {
+                    icon.classList.remove('fa-copy');
+                    icon.classList.add('fa-check');
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        icon.classList.remove('fa-check');
+                        icon.classList.add('fa-copy');
+                        btn.classList.remove('copied');
+                    }, 2000);
+                });
+            });
+        });
+
+        const readMoreBtn = document.getElementById('readMoreBtn');
+        const bioContent = document.getElementById('bioContent');
+
+        readMoreBtn.addEventListener('click', () => {
+            bioContent.classList.toggle('active');
+            readMoreBtn.classList.toggle('active');
+            if (readMoreBtn.classList.contains('active')) {
+                readMoreSpan.textContent = currentLang === 'ar' ? 'إغلاق النبذة' : 'Close Bio';
+            } else {
+                readMoreSpan.textContent = currentLang === 'ar' ? 'اقرأ المزيد عني' : 'Read More About Me';
+            }
+        });
+
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const starsContainer = document.getElementById('starsContainer');
+        const numberOfStars = 60; 
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            const duration = Math.random() * 4 + 2;
+            star.style.animationDuration = `${duration}s`;
+            const delay = Math.random() * 5;
+            star.style.animationDelay = `${delay}s`;
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
