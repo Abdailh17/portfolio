@@ -164,7 +164,7 @@
         .link-card:hover .icon-github::after { border-color: #ffffff; opacity: 1; transform: scale(1.3); }
         .link-card:hover .icon-telegram::after { border-color: #2AABEE; opacity: 1; transform: scale(1.3); }
 
-        /* زر نسخ الرابط الجديد (أسفل الصفحة) */
+        /* زر نسخ الرابط */
         .copy-page-btn {
             display: flex;
             align-items: center;
@@ -297,7 +297,6 @@
             </a>
         </div>
 
-        <!-- زر نسخ رابط الصفحة الجديد -->
         <button class="copy-page-btn" id="copyPageBtn">
             <i class="fa-regular fa-copy" id="copyPageIcon"></i>
             <span data-ar="نسخ رابط الصفحة" data-en="Copy Page Link">نسخ رابط الصفحة</span>
@@ -340,17 +339,22 @@
             }
         });
 
+        // دالة نسخ رابط الصفحة
         const copyPageBtn = document.getElementById('copyPageBtn');
         const copyPageIcon = document.getElementById('copyPageIcon');
+        const copyPageText = document.querySelector('#copyPageBtn span');
 
         copyPageBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(window.location.href).then(() => {
-                copyPageIcon.classList.remove('fa-copy');
-                copyPageIcon.classList.add('fa-check');
+                // تغيير النص بدلاً من الأيقونة
+                const originalText = currentLang === 'ar' ? 'نسخ رابط الصفحة' : 'Copy Page Link';
+                const copiedText = currentLang === 'ar' ? 'تم النسخ!' : 'Copied!';
+                
+                copyPageText.textContent = copiedText;
                 copyPageBtn.classList.add('copied');
+
                 setTimeout(() => {
-                    copyPageIcon.classList.remove('fa-check');
-                    copyPageIcon.classList.add('fa-copy');
+                    copyPageText.textContent = originalText;
                     copyPageBtn.classList.remove('copied');
                 }, 2000);
             });
@@ -362,12 +366,9 @@
                 const username = btn.getAttribute('data-username');
                 const icon = btn.querySelector('i');
                 navigator.clipboard.writeText(username).then(() => {
-                    icon.classList.remove('fa-copy');
-                    icon.classList.add('fa-check');
+                    // لا نغير الأيقونة هنا بل نعتمد على لون النص الأخضر
                     btn.classList.add('copied');
                     setTimeout(() => {
-                        icon.classList.remove('fa-check');
-                        icon.classList.add('fa-copy');
                         btn.classList.remove('copied');
                     }, 2000);
                 });
